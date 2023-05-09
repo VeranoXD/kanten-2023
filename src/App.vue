@@ -26,20 +26,16 @@ const handleSignOut = () => {
 </script>
 
 <template>
-  <nav class="bg-black border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+  <nav class="bg-black border-gray-200 px-4 lg:px-6 py-5 dark:bg-gray-800 sticky">
     <div
       class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
     >
       <a href="#" class="flex items-center">
         <img
-          src="./assets/img/logo.svg"
-          class="mr-3 h-6 sm:h-9 invert"
-          alt="Flowbite Logo"
+          src="./assets/img/Black_Video.gif" loop
+          class="mr-3 h-12 w-auto sm:h-12"
+          alt="Kanten Logo"
         />
-        <span
-          class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
-          >Flowbite</span
-        >
       </a>
       <div class="flex items-center lg:order-2">
         <a
@@ -138,5 +134,6 @@ const handleSignOut = () => {
 #app {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 </style>
