@@ -1,14 +1,6 @@
 <template>
-<!--   <div class="flex flex-col text-center space-y-10 h-100">
-<h1 class="w-100">Opret bruger</h1>
-<p class="w-100"><input type="text" placeholder="Emailaresse" v-model="email"></p>
-<p class="w-100"><input type="password" placeholder="Kodeord" v-model="password"></p>
-<p class="w-100"><button @click="register">Opret bruger</button></p>
-<p class="w-100"><button @click="signInWithGoogle">Log ind med Google</button></p>
-</div> -->
-
   <div
-    class="flex min-h-screen overflow-auto flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8 bg-black"
+    class="flex overflow-auto flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8 bg-black"
   >
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       <h2
