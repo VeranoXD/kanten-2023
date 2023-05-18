@@ -22,7 +22,7 @@
               placeholder="Emailadresse"
               v-model="email"
               required=""
-              class="p-4 block w-full rounded-md text-md border-0 py-3.5 text-gray-900 shadow-sm placeholder:text-gray-900 sm:text-sm sm:leading-6"
+              class="p-4 block w-full rounded-md text-md border-0 py-3.5 bg-gray-50 text-gray-900 shadow-sm placeholder:text-gray-900 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -37,7 +37,7 @@
               autocomplete="password"
               placeholder="Adgangskode"
               required=""
-              class="p-4 block w-full rounded-md text-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-900 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+              class="p-4 block w-full rounded-md text-md border-0 py-3.5 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-900 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -46,7 +46,7 @@
           <button
             type="submit"
             @click="register"
-            class="flex w-full justify-center rounded-md bg-white px-3 py-3.5 text-md font-bold leading-6 text-black shadow-sm hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            class="flex w-full justify-center rounded-md bg-gray-50 px-3 py-3.5 text-md font-bold leading-6 text-black shadow-sm hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Opret bruger
           </button>
