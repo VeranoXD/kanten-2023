@@ -1,5 +1,6 @@
 <template>
   <div class="reset-password">
+    <Modal v-if="modalActive" v-on:close-modal="closeModal"/>
     <div class="form-wrap overflow-hidden flex justify-center h-screen self-center my-0 mx-auto w-full bg-black">
       <form class="reset py-0 px-2 relative flex flex-col justify-center items-center flex-1">
         <h2 class="text-white font-extrabold text-3xl">Nulstil Adgangskode</h2>
@@ -41,8 +42,23 @@
 </template>
 
 <script>
+import Modal from '../components/Modal.vue';
 export default {
+  components: { Modal },
   name: "GlemtAdgangskode",
+  data(){
+    return {
+        email: null,
+        modalActive: true,
+        modalMessage: ""
+    }
+  },
+  methods: {
+    closeModal() {
+       this.modalActive = !this.modalActive;
+       this.email = "";
+    }
+  }
 };
 </script>
 
