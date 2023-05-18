@@ -9,9 +9,6 @@
 <script>
 import Navigation from "./components/Navigation.vue";
 import Footer from "./components/Footer.vue";
-import { onMounted, provide, reactive, ref } from "vue";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "vue-router";
 import Hjem from "./views/Hjem.vue";
 
 export default {
@@ -63,6 +60,12 @@ export default {
 .container {
   max-width: 1440px;
   margin: 0 auto;
+}
+
+.error {
+  text-align: center;
+  font-size: 12px;
+  color: red;
 }
 
 @media screen and (min-width: 375px) {

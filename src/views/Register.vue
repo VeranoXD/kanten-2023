@@ -4,6 +4,7 @@
   >
     <form
       class="login py-0 px-2 relative flex flex-col justify-center items-center flex-1"
+      @submit.prevent="register"
     >
       <div class="top flex justify-center items-center">
         <img class="w-36" src="../assets/img/Black_Video.gif" alt="" />
@@ -16,12 +17,12 @@
         >
       </p>
       <div class="inputs w-full max-w-sm">
-        <div class="input relative flex justify-center items-center mb-2">
+        <!--         <div class="input relative flex justify-center items-center mb-2">
           <input
             type="text"
             placeholder="Brugernavn"
             class="text bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
-            v-model="brugernavn"
+            v-model="register_form.brugernavn"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -41,13 +42,14 @@
             ></path>
             <path d="M3 7l9 6l9 -6"></path>
           </svg>
-        </div>
+        </div> -->
         <div class="input relative flex justify-center items-center mb-2">
           <input
             type="text"
             placeholder="Email"
             class="text bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
-            v-model="email"
+            required
+            v-model="register_form.email"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +75,8 @@
             type="password"
             placeholder="Adgangskode"
             class="password w-full bg-gray-200 pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
-            v-model="password"
+            required
+            v-model="register_form.password"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -95,12 +98,12 @@
             <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
           </svg>
         </div>
-        <div class="input relative flex justify-center items-center mb-2">
+        <!--         <div class="input relative flex justify-center items-center mb-2">
           <input
             type="password"
             placeholder="Gentag adgangskode"
             class="confirmpassword w-full bg-gray-200 pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
-            v-model="confirmpassword"
+            v-model="register_form.confirmpassword"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -123,9 +126,10 @@
             <path d="M16 19h6"></path>
             <path d="M19 16v6"></path>
           </svg>
-        </div>
+        </div> -->
       </div>
       <button
+        value="register"
         class="sign-in text-white border-2 border-white px-10 py-3 w-full max-w-sm mt-2"
       >
         Opret Bruger
@@ -135,16 +139,42 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase/firebaseInit";
+
 export default {
-  name: "Register",
-  data(){
+  setup() {
+    const login_form = ref({});
+    const register_form = ref({});
+    const store = useStore();
+    const register = () => {
+      store.dispatch("register", register_form.value);
+    };
+/*     onMounted( async () => {
+      const querySnapshot = await getDocs(collection(db, "register"));
+      let fbUsers = []
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        const register = {
+          id: doc.id,
+          content: doc.data().content,
+          done: doc.data().done,
+        };
+        fbUsers.push(register_form);
+      })
+      register_form.value = fbUsers
+    }); */
+
     return {
-      brugernavn: null, 
-      email: null,
-      password: null, 
-      confirmpassword: null,
-    }
-  }
+      login_form,
+      register_form,
+      register,
+    };
+    
+  },
+  
 };
 </script>
 

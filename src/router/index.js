@@ -16,7 +16,8 @@ const router = createRouter({
             name: 'events',
             component: () => import("../components/Events.vue"),
             meta: {
-                title: 'Hjem'
+                title: 'Hjem',
+                requiresAuth: false
             }, 
         },
         { 
@@ -24,7 +25,8 @@ const router = createRouter({
             name: 'register',
             component: () => import("../views/Register.vue"),
             meta: {
-                title: 'Opret Bruger'
+                title: 'Opret Bruger',
+                requiresAuth: false
             }, 
         },
         { 
@@ -32,7 +34,8 @@ const router = createRouter({
             name: 'Login',
             component: () => import("../views/Login.vue"), 
             meta: {
-                title: 'Login'
+                title: 'Login',
+          
             }, 
         },
         { 
@@ -40,7 +43,8 @@ const router = createRouter({
             name: 'GlemtAdgangskode',
             component: () => import("../views/ForgotPassword.vue"),
             meta: {
-                title: 'Glemt Adgangskode?'
+                title: 'Glemt Adgangskode?',
+                requiresAuth: false
             }, 
         },
         {
@@ -53,7 +57,8 @@ const router = createRouter({
             name: 'seevents',
             component: () => import("../views/SeEvents.vue"),
             meta: {
-                title: 'Events'
+                title: 'Events',
+                requiresAuth: false
             },
         },
     ],

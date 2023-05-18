@@ -1,6 +1,7 @@
 <template>
   <div class="reset-password">
-    <Modal v-if="modalActive" v-on:close-modal="closeModal"/>
+    <Modal v-if="modalActive" :modalMessage="modalMessage" v-on:close-modal="closeModal"/>
+    <Loading v-if="loading"/>
     <div class="form-wrap overflow-hidden flex justify-center h-screen self-center my-0 mx-auto w-full bg-black">
       <form class="reset py-0 px-2 relative flex flex-col justify-center items-center flex-1">
         <h2 class="text-white font-extrabold text-3xl">Nulstil Adgangskode</h2>
@@ -35,32 +36,36 @@
             </svg>
           </div>
         </div>
-        <button class="sign-in text-white border-2 border-white px-10 py-3 w-full max-w-sm">Nulstil Adgangskode</button>
+        <button @click.prevent="resetPassword" class="sign-in text-white border-2 border-white px-10 py-3 w-full max-w-sm">Nulstil Adgangskode</button>
       </form>
     </div>
   </div>
 </template>
 
 <script>
+import Loading from '../components/Loading.vue';
 import Modal from '../components/Modal.vue';
+
+
 export default {
-  components: { Modal },
+  components: { Modal, Loading},
   name: "GlemtAdgangskode",
   data(){
     return {
         email: null,
-        modalActive: true,
-        modalMessage: ""
+        modalActive: false,
+        modalMessage: "",
+        loading: null,
     }
   },
   methods: {
     closeModal() {
        this.modalActive = !this.modalActive;
        this.email = "";
-    }
+    },
   }
 };
 </script>
-
+  
 <style>
 </style>

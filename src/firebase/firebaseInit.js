@@ -1,12 +1,8 @@
-import {getAuth, onAuthStateChanged} from "firebase/auth"
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+import { initializeApp } from "firebase/app"
+import { getFirestore } from "firebase/firestore"
+import { getAuth } from "firebase/auth"
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBWlSmea-Kmc8VbsbiKrRnLVuFdzlp-Rr8",
   authDomain: "kanten-2023.firebaseapp.com",
@@ -18,8 +14,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig)
-const db = getFirestore(app)
+const db = getFirestore(app);
 
-export {
-    db
-}
+const auth = getAuth(app);
+
+export { auth, db }

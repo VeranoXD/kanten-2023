@@ -3,7 +3,7 @@
     class="form-wrap overflow-hidden flex justify-center h-screen self-center my-0 mx-auto w-full bg-black"
   >
     <form
-      class="login py-0 px-2 relative flex flex-col justify-center items-center flex-1"
+      class="login py-0 px-2 relative flex flex-col justify-center items-center flex-1" @submit.prevent="login"
     >
       <div class="top flex justify-center items-center">
         <img class="w-36" src="../assets/img/Black_Video.gif" alt="" />
@@ -21,7 +21,7 @@
             type="text"
             placeholder="Email"
             class="text bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
-            v-model="email"
+            v-model="login_form.email"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@
             type="password"
             placeholder="Adgangskode"
             class="password w-full bg-gray-200 pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
-            v-model="password"
+            v-model="login_form.password"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -77,6 +77,7 @@
       >
       <button
         class="sign-in text-white border-2 border-white px-10 py-3 w-full max-w-sm"
+        value="login"
       >
         Login
       </button>
@@ -85,15 +86,28 @@
 </template>
     
 <script>
+import {ref} from 'vue'
+import { useStore } from 'vuex'
+import store from '../store';
+
 export default {
-  name: "Login",
-  data() {
+  setup() {
+    const login_form = ref({});
+    const register_form = ref({});
+    const store = useStore();
+
+    const login = () => {
+      store.dispatch('login', login_form.value);
+
+    }
+
     return {
-      email: null,
-      password: null,
-    };
-  },
-};
+      login_form,
+      register_form,
+      login
+    }
+  }
+}
 </script> 
 
 <style>

@@ -3,7 +3,7 @@
     <div class="event-cards container">
       <div class="toggle-edit flex justify-end items-center gap-3 pb-10">
         <label class="relative inline-flex items-center">
-        <span class="text-white mr-3">Toggle Redigering</span>
+        <h1 class="text-white mr-3">Toggle Redigering</h1>
         <input type="checkbox" v-model="editPost">
         </label>
       </div>
