@@ -1,21 +1,50 @@
 <template>
-  <RouterView />
-  <Navigation></Navigation> 
-  <Footer></Footer>
+  <div class="app">
+    <Navigation v-if="!navigation"></Navigation>
+    <RouterView />
+    <Footer v-if="!navigation"></Footer>
+  </div>
 </template>
 
-<script setup>
+<script>
 import Navigation from "./components/Navigation.vue";
-import Footer from "./components/Footer.vue"
+import Footer from "./components/Footer.vue";
 import { onMounted, provide, reactive, ref } from "vue";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "vue-router";
 import Hjem from "./views/Hjem.vue";
 
-const router = useRouter();
-const isLoggedin = ref(false);
-let auth;
-
+export default {
+  name: "app",
+  components: { Navigation, Footer },
+  data() {
+    return {
+      navigation: null,
+    };
+  },
+  created() {
+    this.checkRoute();
+  },
+  mounted() {},
+  methods: {
+    checkRoute() {
+      if (
+        this.$route.name === "Login" ||
+        this.$route.name === "register" ||
+        this.$route.name === "GlemtAdgangskode"
+      ) {
+        this.navigation = true;
+        return;
+      }
+      this.navigation = false;
+    },
+  },
+  watch: {
+    $route() {
+      this.checkRoute();
+    }
+  },
+};
 </script>
 
 <style>
@@ -36,36 +65,31 @@ let auth;
   margin: 0 auto;
 }
 
-@media screen and (min-width: 375px){
-  .event-cards{
+@media screen and (min-width: 375px) {
+  .event-cards {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
 @media screen and (min-width: 500px) {
-  .event-card-wrap{
+  .event-card-wrap {
     padding: 100px 16px;
   }
 
-  .event-cards{
+  .event-cards {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
-@media screen and (min-width: 900px){
-  .event-cards{
+@media screen and (min-width: 900px) {
+  .event-cards {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media screen and (min-width: 1200px){
-  .event-cards{
+@media screen and (min-width: 1200px) {
+  .event-cards {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
-
-
-
 </style>

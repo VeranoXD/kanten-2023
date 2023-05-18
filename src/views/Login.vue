@@ -1,46 +1,111 @@
 <template>
-  <h1>Sign In to an Account</h1>
-  <p><input type="text" placeholder="E-mail" v-model="email" /></p>
-  <p><input type="password" placeholder="Password" v-model="password" /></p>
-  <p v-if="errorMsg">{{ errorMsg }}</p>
-  <p><button @click="register">Submit</button></p>
-  <p><button @click="signInWithGoogle">Sign In With Google</button></p>
+  <div
+    class="form-wrap overflow-hidden flex justify-center h-screen self-center my-0 mx-auto w-full bg-black"
+  >
+    <form
+      class="login py-0 px-2 relative flex flex-col justify-center items-center flex-1"
+    >
+      <div class="top flex justify-center items-center">
+        <img class="w-36" src="../assets/img/Black_Video.gif" alt="" />
+      </div>
+      <h2 class="text-white font-extrabold text-3xl">Login til Kanten</h2>
+      <p class="login-register mb-6 mt-4 text-white">
+        Har du ikke en bruger?
+        <RouterLink class="text-white underline" :to="{ name: 'register' }"
+          >Opret bruger</RouterLink
+        >
+      </p>
+      <div class="inputs w-full max-w-sm">
+        <div class="input relative flex justify-center items-center mb-2">
+          <input
+            type="text"
+            placeholder="Email"
+            class="text bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
+            v-model="email"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-mail w-6 absolute left-2"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+            ></path>
+            <path d="M3 7l9 6l9 -6"></path>
+          </svg>
+        </div>
+        <div class="input relative flex justify-center items-center mb-2">
+          <input
+            type="password"
+            placeholder="Adgangskode"
+            class="password w-full bg-gray-200 pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
+            v-model="password"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-mail w-6 absolute left-2"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z"
+            ></path>
+            <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+            <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
+          </svg>
+        </div>
+      </div>
+      <router-link
+        class="glemt-adgangskode cursor-pointer text-sm text-white mt-2 mx-0 mb-3"
+        :to="{ name: 'GlemtAdgangskode' }"
+        >Glemt Adgangskode?</router-link
+      >
+      <button
+        class="sign-in text-white border-2 border-white px-10 py-3 w-full max-w-sm"
+      >
+        Login
+      </button>
+    </form>
+  </div>
 </template>
     
-<script setup>
-import { ref } from "vue";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useRouter } from "vue-router";
-const email = ref("");
-const password = ref("");
-const errorMsg = ref();
-const router = useRouter();
-
-const register = () => {
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, email.value, password.value)
-    .then((data) => {
-      console.log("Successfully registered!");
-      router.push("/feed");
-    })
-    .catch((error) => {
-      console.log(error.code);
-      switch (error.code) {
-        case "auth/invalid-emil":
-          errorMsg.value = "Invalid e-mil";
-          break;
-        case "auth/user-not-found":
-          errorMsg.value = "No account with that emil was found";
-          break;
-        case "auth/wrong-password":
-          errorMsg.value = "Incorrect password";
-          break;
-        default:
-          errorMsg.value = "E-mail or password was incorrect";
-          break;
-      }
-    });
+<script>
+export default {
+  name: "Login",
+  data() {
+    return {
+      email: null,
+      password: null,
+    };
+  },
 };
-
-const signInWithGoogle = () => {};
 </script> 
+
+<style>
+@media screen and (min-width: 900px) {
+  .form-wrap {
+    width: 100%;
+  }
+  .form {
+    padding: 0 50px;
+  }
+  h2 {
+    font-size: 180px;
+  }
+}
+</style>

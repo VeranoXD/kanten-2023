@@ -40,6 +40,13 @@
           <li>
             <RouterLink
               class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
+              to="/seevents"
+              >Events
+            </RouterLink>
+          </li>
+          <li>
+            <RouterLink
+              class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
               to="/login"
             >
               Login
@@ -51,34 +58,6 @@
               to="/register"
             >
               Opret Bruger
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink
-              class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
-              to="/seevents"
-              >Events
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink
-              class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
-              to="/events"
-              >Events
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink
-              class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
-              to="/events"
-              >Events
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink
-              class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
-              to="/events"
-              >Events
             </RouterLink>
           </li>
           <li>

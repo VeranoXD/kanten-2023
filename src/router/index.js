@@ -6,22 +6,42 @@ const router = createRouter({
         { 
             path: "/", 
             name: 'Hjem',
-            component: () => import("../views/Hjem.vue") 
-        },
-        { 
-            path: "/register",
-            name: 'register',
-            component: () => import("../views/Register.vue") 
+            component: () => import("../views/Hjem.vue"),
+            meta: {
+                title: 'Hjem',
+            },
         },
         { 
             path: "/events",
             name: 'events',
-            component: () => import("../components/Events.vue") 
+            component: () => import("../components/Events.vue"),
+            meta: {
+                title: 'Hjem'
+            }, 
+        },
+        { 
+            path: "/register",
+            name: 'register',
+            component: () => import("../views/Register.vue"),
+            meta: {
+                title: 'Opret Bruger'
+            }, 
         },
         { 
             path: "/login", 
             name: 'Login',
-            component: () => import("../views/Login.vue") 
+            component: () => import("../views/Login.vue"), 
+            meta: {
+                title: 'Login'
+            }, 
+        },
+        { 
+            path: "/glemt-adgangskode", 
+            name: 'GlemtAdgangskode',
+            component: () => import("../views/ForgotPassword.vue"),
+            meta: {
+                title: 'Glemt Adgangskode?'
+            }, 
         },
         {
             path: "/opret",
@@ -32,36 +52,19 @@ const router = createRouter({
             path: "/seevents",
             name: 'seevents',
             component: () => import("../views/SeEvents.vue"),
+            meta: {
+                title: 'Events'
+            },
         },
     ],
+});
+
+router.beforeEach((to, from, next) => {
+    document.title = `Kanten | ${to.meta.title}`; 
+    next();
 });
 
 
 export default router;
 
-/*  const getCurrentUser = () => {
-    return new Promise ((resolve, reject) => {
-        const removeListener = onAuthStateChanged(
-            getAuth(),
-            (user) => {
-                removeListener();
-                resolve(user);
-            },
-            reject
-        );
-    });
-};
 
-router.beforeEach(async (to, from, next) => {
-if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (await getCurrentUser()) {
-        next();
-    }
-    else {
-        alert("you dont have access!");
-        next("/");
-    }
-} else {
-    next();
-}
-});  */

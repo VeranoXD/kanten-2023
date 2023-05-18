@@ -1,137 +1,152 @@
 <template>
   <div
-    class="flex overflow-auto flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8 bg-black"
+    class="form-wrap overflow-hidden flex justify-center h-screen self-center my-0 mx-auto w-full bg-black"
   >
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <h2
-        class="mt-10 text-center text-5xl font-extrabold leading-9 tracking-tight sm:text-6xl text-white"
+    <form
+      class="login py-0 px-2 relative flex flex-col justify-center items-center flex-1"
+    >
+      <div class="top flex justify-center items-center">
+        <img class="w-36" src="../assets/img/Black_Video.gif" alt="" />
+      </div>
+      <h2 class="text-white font-extrabold text-3xl">Opret Bruger</h2>
+      <p class="login-register mb-6 mt-4 text-white">
+        Har du allerede en bruger?
+        <RouterLink class="text-white underline" :to="{ name: 'Login' }"
+          >Login</RouterLink
+        >
+      </p>
+      <div class="inputs w-full max-w-sm">
+        <div class="input relative flex justify-center items-center mb-2">
+          <input
+            type="text"
+            placeholder="Brugernavn"
+            class="text bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
+            v-model="brugernavn"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-mail w-6 absolute left-2"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+            ></path>
+            <path d="M3 7l9 6l9 -6"></path>
+          </svg>
+        </div>
+        <div class="input relative flex justify-center items-center mb-2">
+          <input
+            type="text"
+            placeholder="Email"
+            class="text bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
+            v-model="email"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-mail w-6 absolute left-2"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+            ></path>
+            <path d="M3 7l9 6l9 -6"></path>
+          </svg>
+        </div>
+        <div class="input relative flex justify-center items-center mb-2">
+          <input
+            type="password"
+            placeholder="Adgangskode"
+            class="password w-full bg-gray-200 pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
+            v-model="password"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-mail w-6 absolute left-2"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z"
+            ></path>
+            <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+            <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
+          </svg>
+        </div>
+        <div class="input relative flex justify-center items-center mb-2">
+          <input
+            type="password"
+            placeholder="Gentag adgangskode"
+            class="confirmpassword w-full bg-gray-200 pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
+            v-model="confirmpassword"
+          />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-mail w-6 absolute left-2"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M12.5 21h-5.5a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2h10a2 2 0 0 1 1.74 1.012"
+            ></path>
+            <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+            <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
+            <path d="M16 19h6"></path>
+            <path d="M19 16v6"></path>
+          </svg>
+        </div>
+      </div>
+      <button
+        class="sign-in text-white border-2 border-white px-10 py-3 w-full max-w-sm mt-2"
       >
-        Opret bruger
-      </h2>
-    </div>
-
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-xl">
-      <form class="space-y-6" action="#" method="POST">
-        <div>
-          <div class="mt-2">
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autocomplete="email"
-              placeholder="Emailadresse"
-              v-model="email"
-              required=""
-              class="p-4 block w-full rounded-md text-md border-0 py-3.5 bg-gray-50 text-gray-900 shadow-sm placeholder:text-gray-900 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-
-        <div>
-          <div class="mt-2">
-            <input
-              id="password"
-              name="password"
-              type="password"
-              v-model="password"
-              autocomplete="password"
-              placeholder="Adgangskode"
-              required=""
-              class="p-4 block w-full rounded-md text-md border-0 py-3.5 bg-gray-50 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-900 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-
-        <div>
-          <button
-            type="submit"
-            @click="register"
-            class="flex w-full justify-center rounded-md bg-gray-50 px-3 py-3.5 text-md font-bold leading-6 text-black shadow-sm hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Opret bruger
-          </button>
-        </div>
-
-        <div>
-          <button
-            type="submit"
-            @click="signInWithGoogle"
-            class="flex w-full justify-center rounded-md bg-slate-950 px-3 py-3.5 text-md font-bold leading-6 text-slate-600 shadow-sm hover:bg-slate-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            <svg class="mx-3"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              viewBox="0 0 32 32"
-              width="25"
-              height="25"
-            >
-              <defs>
-                <path
-                  id="A"
-                  d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"
-                />
-              </defs>
-              <clipPath id="B"><use xlink:href="#A" /></clipPath>
-              <g transform="matrix(.727273 0 0 .727273 -.954545 -1.45455)">
-                <path d="M0 37V11l17 13z" clip-path="url(#B)" fill="#fbbc05" />
-                <path
-                  d="M0 11l17 13 7-6.1L48 14V0H0z"
-                  clip-path="url(#B)"
-                  fill="#ea4335"
-                />
-                <path
-                  d="M0 37l30-23 7.9 1L48 0v48H0z"
-                  clip-path="url(#B)"
-                  fill="#34a853"
-                />
-                <path
-                  d="M48 48L17 24l-4-3 35-10z"
-                  clip-path="url(#B)"
-                  fill="#4285f4"
-                />
-              </g>
-            </svg>
-            Log ind med Google
-          </button>
-        </div>
-      </form>
-    </div>
+        Opret Bruger
+      </button>
+    </form>
   </div>
 </template>
 
- <script setup>
-import { ref } from "vue";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
-import { useRouter } from "vue-router";
-const email = ref("");
-const password = ref("");
-const router = useRouter();
-
-const register = () => {
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email.value, password.value)
-    .then((data) => {
-      console.log("Successfully registered!");
-      router.push("/feed");
-    })
-    .catch((error) => {
-      console.log(error.code);
-      alert(error.message);
-    });
-};
-
-const signInWithGoogle = () => {
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(getAuth(), provider)
-    .then((result) => {
-      console.log(result.user);
-      router.push("/feed");
-    })
-    .catch((error) => {});
+<script>
+export default {
+  name: "Register",
+  data(){
+    return {
+      brugernavn: null, 
+      email: null,
+      password: null, 
+      confirmpassword: null,
+    }
+  }
 };
 </script>
+
+<style>
+</style>

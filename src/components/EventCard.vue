@@ -73,5 +73,32 @@ export default {
 </script>
 
 <style>
+@media screen and (min-width: 375px){
+  .event-cards{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
+@media screen and (min-width: 500px) {
+  .event-card-wrap{
+    padding: 100px 16px;
+  }
+
+  .event-cards{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media screen and (min-width: 900px){
+  .event-cards{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .event-cards{
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 </style>
