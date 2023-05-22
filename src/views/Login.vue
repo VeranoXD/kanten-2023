@@ -21,7 +21,7 @@
             type="text"
             placeholder="Email"
             class="text bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
-            v-model="login_form.email"
+            v-model="email"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@
             type="password"
             placeholder="Adgangskode"
             class="password w-full bg-gray-200 pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
-            v-model="login_form.password"
+            v-model="password"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -86,25 +86,31 @@
 </template>
     
 <script>
-import {ref} from 'vue'
-import { useStore } from 'vuex'
-import store from '../store';
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../firebase/firebaseInit'
+import router from '../router';
 
 export default {
-  setup() {
-    const login_form = ref({});
-    const register_form = ref({});
-    const store = useStore();
-
-    const login = () => {
-      store.dispatch('login', login_form.value);
-
-    }
-
+  data() {
     return {
-      login_form,
-      register_form,
-      login
+      email:    '',
+      password: ''
+    }
+  },
+  methods: {
+    login() {
+      // login user
+      signInWithEmailAndPassword(auth,this.email,this.password)
+      .then(() => {
+        // emit event for member area
+        this.$emit('loggedIn')
+        console.log('Du er logget ind')
+        router.push('/')
+      })
+      .catch((error) => {
+        console.log(error.code);
+        alert(error.message);
+      })
     }
   }
 }

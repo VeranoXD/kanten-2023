@@ -38,14 +38,14 @@
       <div class="center-stuff">
         <ul class="space-y-2 font-medium flex flex-col h-auto">
           <li>
-            <RouterLink
+            <RouterLink 
               class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
               to="/seevents"
               >Events
             </RouterLink>
           </li>
           <li>
-            <RouterLink
+            <RouterLink v-if="!isLoggedIn"
               class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
               to="/login"
             >
@@ -53,7 +53,7 @@
             </RouterLink>
           </li>
           <li>
-            <RouterLink
+            <RouterLink v-if="!isLoggedIn"
               class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
               to="/register"
             >
@@ -61,37 +61,54 @@
             </RouterLink>
           </li>
           <li>
-            <button @click="handleSignOut" v-if="isLoggedin">Sign out</button>
+            <button class="flex w-full p-2 text-white rounded-lg justify-center text-center hover:bg-orange-900" to="/" @click="handleSignOut" v-if="isLoggedIn"  >Log Ud</button>
           </li>
         </ul>
+        <div class="profile" ref="profile">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
+</svg>
+        </div>
       </div>
     </div>
   </aside>
 </template>
 
-    <script setup>
-import { onMounted, ref } from "vue";
+<script>
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "vue-router";
+import { onMounted, ref } from "vue";
+import router from "../router";
 
-const router = useRouter();
-const isLoggedin = ref(false);
-let auth;
+export default {
+  setup() {
+    const isLoggedIn = ref(false);
+    const auth = getAuth();
 
-onMounted(() => {
-  auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      isLoggedin.value = true;
-    } else {
-      isLoggedin.value = false;
-    }
-  });
-});
+    onMounted(() => {
+      onAuthStateChanged(auth, (user) => {
+        isLoggedIn.value = user !== null;
+      });
+    });
 
-const handleSignOut = () => {
-  signOut(auth).then(() => {
-    router.push("/");
-  });
+    const handleSignOut = () => {
+      signOut(auth)
+        .then(() => {
+          router.push("/");
+          console.log("Du er nu logget ud!")
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      
+    };
+
+    return {
+      isLoggedIn,
+      handleSignOut,
+    };
+  },
 };
 </script>

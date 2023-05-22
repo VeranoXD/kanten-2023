@@ -4,7 +4,7 @@
   >
     <form
       class="login py-0 px-2 relative flex flex-col justify-center items-center flex-1"
-      @submit.prevent="register"
+      @submit.prevent="signUp"
     >
       <div class="top flex justify-center items-center">
         <img class="w-36" src="../assets/img/Black_Video.gif" alt="" />
@@ -17,39 +17,13 @@
         >
       </p>
       <div class="inputs w-full max-w-sm">
-        <!--         <div class="input relative flex justify-center items-center mb-2">
-          <input
-            type="text"
-            placeholder="Brugernavn"
-            class="text bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
-            v-model="register_form.brugernavn"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-mail w-6 absolute left-2"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
-            ></path>
-            <path d="M3 7l9 6l9 -6"></path>
-          </svg>
-        </div> -->
         <div class="input relative flex justify-center items-center mb-2">
           <input
-            type="text"
+            type="email"
             placeholder="Email"
-            class="text bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
+            class="email bg-gray-200 w-full pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
             required
-            v-model="register_form.email"
+            v-model="email"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +50,7 @@
             placeholder="Adgangskode"
             class="password w-full bg-gray-200 pl-10 pr-3 py-6 h-12 outline-none flex items-center self-center"
             required
-            v-model="register_form.password"
+            v-model="password"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +103,6 @@
         </div> -->
       </div>
       <button
-        value="register"
         class="sign-in text-white border-2 border-white px-10 py-3 w-full max-w-sm mt-2"
       >
         Opret Bruger
@@ -139,42 +112,34 @@
 </template>
 
 <script>
-import { ref, onMounted } from "vue";
-import { useStore } from "vuex";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase/firebaseInit";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase/firebaseInit';
+import router from '../router';
+
 
 export default {
-  setup() {
-    const login_form = ref({});
-    const register_form = ref({});
-    const store = useStore();
-    const register = () => {
-      store.dispatch("register", register_form.value);
-    };
-/*     onMounted( async () => {
-      const querySnapshot = await getDocs(collection(db, "register"));
-      let fbUsers = []
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-        const register = {
-          id: doc.id,
-          content: doc.data().content,
-          done: doc.data().done,
-        };
-        fbUsers.push(register_form);
-      })
-      register_form.value = fbUsers
-    }); */
-
+  emits: ['loggedIn'],
+  data() {
     return {
-      login_form,
-      register_form,
-      register,
+      email: '',
+      password: '',
+      error: null
     };
-    
   },
-  
+  methods: {
+    signUp() {
+      // Registrer ny bruger
+      createUserWithEmailAndPassword (auth, this.email, this.password)
+      .then((data) => {
+        console.log("Du er nu registreret!");
+        router.push('/')
+      })
+      .catch((error) => {
+        console.log(error.code);
+        alert(error.message);
+      })
+    }
+  }
 };
 </script>
 

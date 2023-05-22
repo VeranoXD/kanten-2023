@@ -9,7 +9,7 @@
 <script>
 import Navigation from "./components/Navigation.vue";
 import Footer from "./components/Footer.vue";
-import Hjem from "./views/Hjem.vue";
+import HjemVue from './views/Hjem.vue';
 
 export default {
   name: "app",
@@ -17,6 +17,9 @@ export default {
   data() {
     return {
       navigation: null,
+      isLoggedIn: false,
+      showLogin: true,
+      displayName: ''
     };
   },
   created() {

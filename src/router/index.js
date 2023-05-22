@@ -61,6 +61,14 @@ const router = createRouter({
                 requiresAuth: false
             },
         },
+        {
+            path: "/",
+            name: 'signout',
+            meta: {
+                title: 'SignOut',
+                requiresAuth: false
+            },
+        },
     ],
 });
 

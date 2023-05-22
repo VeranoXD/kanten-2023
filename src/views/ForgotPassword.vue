@@ -43,27 +43,48 @@
 </template>
 
 <script>
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import Loading from '../components/Loading.vue';
 import Modal from '../components/Modal.vue';
 
-
 export default {
-  components: { Modal, Loading},
+  components: { Modal, Loading },
   name: "GlemtAdgangskode",
-  data(){
+  data() {
     return {
-        email: null,
-        modalActive: false,
-        modalMessage: "",
-        loading: null,
+      email: null,
+      modalActive: false,
+      modalMessage: "",
+      loading: false,
     }
   },
   methods: {
-    closeModal() {
-       this.modalActive = !this.modalActive;
-       this.email = "";
+    resetPassword() {
+      const auth = getAuth();
+      const email = this.email;
+      
+      this.loading = true; // Show loading state
+      
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          // Password reset email sent successfully
+          this.modalActive = true;
+          this.modalMessage = "Din adgangskode er nu blevet nulstillet! Tjek din email.";
+        })
+        .catch((error) => {
+          // Error sending password reset email
+          this.modalActive = true;
+          this.modalMessage = error.message;
+        })
+        .finally(() => {
+          this.loading = false; // Hide loading state
+        });
     },
-  }
+    closeModal() {
+      this.modalActive = false;
+      this.email = null;
+    },
+  },
 };
 </script>
   
