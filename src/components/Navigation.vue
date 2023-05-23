@@ -35,6 +35,13 @@
           <img src="../assets/img/Black_Video.gif" loop alt="" />
         </RouterLink>
       </div>
+   <!--    <div class="options flex w-full p-2 text-white rounded-lg justify-center text-center hover:bg-orange-900 ">
+          <div class="option">
+            <RouterLink class="option" to="/admin"> 
+              <p>Admin</p>
+            </RouterLink> 
+          </div>
+        </div> -->
       <div class="center-stuff">
         <ul class="space-y-2 font-medium flex flex-col h-auto">
           <li>
@@ -44,34 +51,35 @@
               >Events
             </RouterLink>
           </li>
-          <li>
+<!--           <li>
             <RouterLink v-if="!isLoggedIn"
               class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
               to="/login"
             >
               Login
             </RouterLink>
-          </li>
-          <li>
+          </li> -->
+<!--           <li>
             <RouterLink v-if="!isLoggedIn"
               class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
               to="/register"
             >
               Opret Bruger
             </RouterLink>
-          </li>
+          </li> -->
           <li>
-            <button class="flex w-full p-2 text-white rounded-lg justify-center text-center hover:bg-orange-900" to="/" @click="handleSignOut" v-if="isLoggedIn"  >Log Ud</button>
+            <div class="logud space-x-1 flex w-full p-2 text-white rounded-lg justify-center text-center hover:bg-orange-900" to="/" @click="handleSignOut" v-if="isLoggedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon text-white icon-tabler icon-tabler-logout" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+   <path d="M9 12h12l-3 -3"></path>
+   <path d="M18 15l3 -3"></path>
+</svg>
+            <button class=""   >Log Ud</button>
+            </div>
+
           </li>
         </ul>
-        <div class="profile" ref="profile">
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-   <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-   <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855"></path>
-</svg>
-        </div>
       </div>
     </div>
   </aside>

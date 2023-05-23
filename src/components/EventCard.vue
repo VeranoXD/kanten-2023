@@ -48,7 +48,7 @@
         </svg>
       </div>
     </div>
-     <img class="block rounded-lg w-full z-3" :src="`../src/assets/eventCards/${event.eventCoverPhoto}.jpg`" alt=""/>  
+     <img class="block rounded-lg w-full z-3" :src="`../src/assets/eventCards/${event.eventCoverPhoto}.png`" alt=""/>  
     <div class="info">
         <h4 class=" font-bold py-2">{{ event.eventTitle }}</h4>
         <h6 class="font-light text-sm py-1"> Oprettet den: {{ event.eventDate }}</h6>

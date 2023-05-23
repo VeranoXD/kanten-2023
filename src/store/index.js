@@ -2,10 +2,10 @@ import { createStore } from 'vuex';
 import router from '../router';
 import { auth } from '../firebase/firebaseInit';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { db } from "../firebase/firebaseInit";
 
 const store = createStore({
     state: {
-        user: null,
         sampleEventCards: [
             {
               eventTitle: "Event Card #1",
@@ -28,6 +28,15 @@ const store = createStore({
               eventDate: "1. August, 2023",
             },
           ],
+          eventPosts: [],
+          eventLoaded: null,
+          eventHTML: "Skriv din event titel her...",
+          eventTitle: "",
+          eventPhotoName: "",
+          eventPhotoFileURL: null,
+          eventPhotoPreview: null,
+          editEvent: null,
+          user: null,
           editPost: null,
     },
     mutations: {
@@ -44,6 +53,24 @@ const store = createStore({
         },
     },
     actions: {
+
+      async getPost({state}) {
+        const dataBase = await db.collection('eventPosts').orderBy('date', 'desc')
+        const dbResults = await dataBase.get();
+        dbResults.forEach((doc) => {
+          if (!state.eventPosts.some(event => event.eventID === doc.id)) {
+            const data = { 
+              eventID: doc.data().eventID,
+              eventHTML: doc.data().eventHTML,
+              eventCoverPhoto: doc.data().eventCoverPhoto,
+              eventTitle: doc.data().eventTitle,
+              eventDate: doc.data().eventDate,
+            }
+            state.eventPosts.push(data);
+          }
+        })
+        state.eventLoaded = true;
+      },
       async login ({commit}, details) {
         const {email, password} = details
 

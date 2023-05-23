@@ -62,6 +62,15 @@ const router = createRouter({
             },
         },
         {
+            path: "/opretevents",
+            name: 'opretevents',
+            component: () => import("../views/CreateEvents.vue"),
+            meta: {
+                title: 'Opret Events',
+                requiresAuth: false
+            },
+        },
+        {
             path: "/",
             name: 'signout',
             meta: {

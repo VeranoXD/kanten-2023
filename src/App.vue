@@ -24,6 +24,7 @@ export default {
   },
   created() {
     this.checkRoute();
+    this.$store.dispatch("getPost")
   },
   mounted() {},
   methods: {
@@ -51,7 +52,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
 
 #app {

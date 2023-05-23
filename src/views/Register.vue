@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase/firebaseInit';
 import router from '../router';
 
@@ -121,6 +121,7 @@ export default {
   emits: ['loggedIn'],
   data() {
     return {
+      /* username: '', */
       email: '',
       password: '',
       error: null
