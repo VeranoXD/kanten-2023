@@ -94,7 +94,7 @@
           </div>
         </form>
 
-        <div
+<!--         <div
           v-for="todo in todos"
           :key="todo"
           class="card p-6  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-8"
@@ -107,7 +107,7 @@
               {{ todo.textareafield }}
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -126,7 +126,6 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseInit";
 
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 /* Firebase refs */
 

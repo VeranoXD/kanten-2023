@@ -100,7 +100,7 @@
         >
           <div class="card-content p-4">
             <div class="content">
-              {{ todo.content }}
+              {{ todos.content }}
               {{ todo.event }}
               {{ todo.venue }}
               {{ todo.textareafield }}
