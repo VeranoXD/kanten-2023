@@ -55,6 +55,22 @@
 
         <div class="control">
           <label
+            for="modested"
+            class="block mb-2 text-sm font-medium text-white dark:text-white"
+            >Dato</label
+          >
+          <input
+            v-model="newDate"
+            type="date" min="today"
+            id="modested"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required
+          />
+        </div>
+
+
+        <div class="control">
+          <label
             for="first_name"
             class="block mb-2 text-sm font-medium text-white dark:text-white"
             >Beskrivelse</label
@@ -93,21 +109,6 @@
             </button>
           </div>
         </form>
-
-<!--         <div
-          v-for="todo in todos"
-          :key="todo"
-          class="card p-6  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-8"
-        >
-          <div class="card-content p-4  ">
-            <div class="content ">
-              {{ todo.content }}
-              {{ todo.event }}
-              {{ todo.venue }}
-              {{ todo.textareafield }}
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -125,6 +126,8 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseInit";
+
+
 
 
 /* Firebase refs */
@@ -163,6 +166,7 @@ const newTodoContent = ref("");
 const newEventType = ref("");
 const newVenue = ref("");
 const newTextareafield = ref("");
+const newDate = ref("");
 
 const addTodo = () => {
   addDoc(eventCollectionRef, {
@@ -171,6 +175,7 @@ const addTodo = () => {
     venue: newVenue.value,
     textareafield: newTextareafield.value,
     done: false,
+    dato: newDate.value,
     date: Date.now(),
   });
   newTodoContent.value = "";

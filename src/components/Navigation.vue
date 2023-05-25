@@ -51,6 +51,13 @@
               >Events
             </RouterLink>
           </li>
+          <li>
+            <RouterLink v-if="isLoggedIn"
+              class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
+              to="/opretevents"
+              >Opret Events
+            </RouterLink>
+          </li>
 <!--           <li>
             <RouterLink v-if="!isLoggedIn"
               class="flex items-center p-2 text-white rounded-lg justify-center hover:bg-orange-900"
