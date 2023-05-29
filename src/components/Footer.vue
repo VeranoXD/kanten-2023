@@ -1,9 +1,9 @@
 <template>
-  <footer class="shadow  sm:ml-96 bg-black">
+  <footer class="shadow  bg-black">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
       <div class="sm:flex sm:items-center sm:justify-between">
         <a href="" class="flex items-center mb-4 sm:mb-0">
-          <img class="w-16" src="../assets/img/fanlogo.jpg" alt="Kanten Logo" />
+          <img class="logo w-16" src="../assets/img/fanlogo.jpg" alt="Kanten Logo" />
         </a>
         <ul
           class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
@@ -80,5 +80,14 @@
 <script setup>
 </script>
 
-<style>
+<style scoped>
+
+@media (max-width: 640px) {
+  .spacer{
+    flex-direction: column;
+  }
+  .logo {
+    display: none;
+  }
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="event-wrapper flex flex-col min-h-xl max-h-8xl sm:ml-96 bg-black">
+  <div class="event-wrapper flex flex-col min-h-xl max-h-8xl bg-black">
     <div class="mx-auto max-w-screen-4xl text-center lg:py-16 lg:px-12">
       <!--    <img class="relative w-fit " v-if="event.welcomeScreen" :src="`../src/assets/eventPhotos/${event.photo}.png`" alt=""/> -->
       <h1

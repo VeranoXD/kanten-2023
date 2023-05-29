@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <Navigation v-if="!navigation"></Navigation>
+    <NavigationTop v-if="!navigation"></NavigationTop>
     <RouterView />
     <Footer v-if="!navigation"></Footer>
   </div>
@@ -10,10 +10,11 @@
 import Navigation from "./components/Navigation.vue";
 import Footer from "./components/Footer.vue";
 import HjemVue from './views/Hjem.vue';
+import NavigationTop from "./components/NavigationTop.vue";
 
 export default {
   name: "app",
-  components: { Navigation, Footer },
+  components: { Navigation, Footer, NavigationTop },
   data() {
     return {
       navigation: null,
@@ -84,19 +85,19 @@ export default {
   }
 
   .event-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
 @media screen and (min-width: 900px) {
   .event-cards {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (min-width: 1200px) {
   .event-cards {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 </style>

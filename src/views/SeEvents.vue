@@ -1,7 +1,7 @@
 <template>
-    <div class="event-card-wrap sm:ml-96 relative py-5 px-1 bg-black">
+    <div class="event-card-wrap relative py-5 px-1 bg-black">
       <div class="container">
-        <h3 class="font-bold text-white text-center text-4xl mb-10">Events</h3>
+        <h3 class="font-bold text-white text-center text-5xl mb-10">Events</h3>
         <div class="event-cards grid gap-10 grid-cols-4 text-center">
           <EventCard
           />
@@ -37,4 +37,12 @@ export default {
 </script>
 
 <style >
+
+@media (max-width: 1500px) {
+  .event-cards{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+}
 </style>
