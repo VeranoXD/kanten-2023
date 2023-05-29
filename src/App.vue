@@ -3,7 +3,7 @@
     <NavigationTop v-if="!navigation"></NavigationTop>
     <RouterView />
     <Footer v-if="!navigation"></Footer>
-    <Newsletter></Newsletter>
+<!--     <Newsletter></Newsletter> -->
   </div>
 </template>
 
@@ -25,10 +25,10 @@ export default {
       displayName: ''
     };
   },
-  created() {
+/*   created() {
     this.checkRoute();
     this.$store.dispatch("getPost")
-  },
+  }, */
   mounted() {},
   methods: {
     checkRoute() {
@@ -61,7 +61,6 @@ export default {
 #app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .container {

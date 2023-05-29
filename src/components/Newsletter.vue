@@ -1,10 +1,12 @@
 <template>
+
+  
  <div  @submit.prevent="addNewsletter" id="newsletter-banner" tabindex="-1" class="  left-0 z-50 flex justify-between w-full p-4 border-b border-gray-800 bg-black dark:bg-gray-700 dark:border-gray-600 border-t">
     <div class="flex items-center flex-shrink-0 w-full mx-auto sm:w-auto">
         <form
         action="#" class="flex flex-col items-center w-full md:flex-row">
             <label for="email" class="flex-shrink-0 mb-2 mr-auto text-sm font-medium text-gray-500 md:mb-0 md:mr-4 dark:text-gray-400 md:m-0">Skriv dig op til vores nyhedsbrev</label>
-            <input v-model="newEmail" type="email" id="email" placeholder="Indsæt din email" class="bg-gray-200 text-gray-900 md:w-64 mb-2 md:mb-0 md:mr-4 text-sm rounded-l block w-full p-2.5 dark:text-white" required />
+            <input type="email" id="email" placeholder="Indsæt din email" class="bg-gray-200 text-gray-900 md:w-64 mb-2 md:mb-0 md:mr-4 text-sm rounded-l block w-full p-2.5 dark:text-white" required />
             <button type="submit" id="cta" class="text-white bg-orange-600 hover:bg-orange-700  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Tilmeld</button>
         </form>
     </div>

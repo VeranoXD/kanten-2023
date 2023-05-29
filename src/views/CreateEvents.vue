@@ -94,7 +94,7 @@
           >
           <span class="sr-only">Upload billede</span>
           <input
-            type="file"
+            type="file" @change="onFileSelected"
             class="block w-full text-sm text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-600 hover:file:bg-orange-100"
           />
         </div>
@@ -129,6 +129,9 @@ import { db } from "../firebase/firebaseInit";
 
 
 
+const onFileSelected = (event) => {
+  console.log(event);
+};
 
 /* Firebase refs */
 

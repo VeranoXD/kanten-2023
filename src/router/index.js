@@ -57,11 +57,6 @@ const router = createRouter({
             }, 
         },
         {
-            path: "/opret",
-            name: 'opret',
-            component: () => import("../views/Opretevent.vue"),
-        },
-        {
             path: "/seevents",
             name: 'seevents',
             component: () => import("../views/SeEvents.vue"),
@@ -84,6 +79,15 @@ const router = createRouter({
             name: 'signout',
             meta: {
                 title: 'SignOut',
+                requiresAuth: false
+            },
+        },
+        {
+            path: "/gallery",
+            name: 'gallery',
+            component: () => import("../views/Gallery.vue"),
+            meta: {
+                title: 'Gallery',
                 requiresAuth: false
             },
         },

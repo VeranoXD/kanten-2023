@@ -9,7 +9,7 @@
   export const todos = ref([]);
 
   const store = createStore({
-      state: {
+/*       state: {
           sampleEventCards: [
 
             ],
@@ -26,8 +26,8 @@
           CLEAR_USER (state) {
             state.user = null
           },
-      },
-      actions: {
+      }, */
+/*       actions: {
 
         async getPost({state}) {
           const dataBase = await db.collection('eventPosts').orderBy('date', 'desc')
@@ -100,7 +100,7 @@
 
           router.push('/login')
         },
-      },
+      }, */
     })
 
     export default store
