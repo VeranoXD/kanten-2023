@@ -1,7 +1,7 @@
 <template>
   <div
     v-for="event in todos "
-    class="event-card flex flex-col relative bg-white rounded-lg"
+    class="event-card flex flex-col relative bg-gray-300 rounded-lg"
   >
     <div class="info ">
       <div class="card p-10">

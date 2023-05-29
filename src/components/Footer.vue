@@ -9,13 +9,13 @@
           class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400"
         >
           <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">Facebook</a>
+            <a href="https://www.facebook.com/kanten.esbjerg/" class="mr-4 hover:underline md:mr-6">Facebook</a>
           </li>
           <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">Instagram</a>
+            <a href="https://www.instagram.com/husetesbjerg/" class="mr-4 hover:underline md:mr-6">Instagram</a>
           </li>
           <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">LinkedIn</a>
+            <a href="https://www.linkedin.com/company/huset-esbjerg/" class="mr-4 hover:underline md:mr-6">LinkedIn</a>
           </li>
         </ul>
       </div>

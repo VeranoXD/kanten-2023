@@ -16,7 +16,16 @@ const router = createRouter({
             name: 'events',
             component: () => import("../components/Events.vue"),
             meta: {
-                title: 'Hjem',
+                title: 'Events',
+                requiresAuth: false
+            }, 
+        },
+        { 
+            path: "/omos",
+            name: 'omos',
+            component: () => import("../views/About.vue"),
+            meta: {
+                title: 'Om Os',
                 requiresAuth: false
             }, 
         },

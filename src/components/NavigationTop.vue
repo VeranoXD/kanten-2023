@@ -26,6 +26,13 @@
               >Tilføj Events
             </RouterLink>
         </li>
+        <li>
+            <RouterLink
+              class="block py-2 pl-3 pr-4 text-gray-300 rounded  md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:bg-gray-700 "
+              to="/omos"
+              >Om os
+            </RouterLink>
+        </li>
 <!--         <li>
             <RouterLink v-if="isLoggedIn"
               class="block py-2 pl-3 pr-4 text-gray-300 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:bg-gray-700 "
