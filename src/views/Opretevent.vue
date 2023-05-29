@@ -114,7 +114,6 @@
 </template>
 
 <script setup>
-/* import ref */
 
 import { ref, onMounted } from 'vue'
 import { 
@@ -123,16 +122,14 @@ import {
 } from 'firebase/firestore'
 import { db } from '@/components/router'
 
-/* Firebase refs */
 
 const eventCollectionRef = collection(db, 'events')
 const eventsCollectionQuery = query(eventCollectionRef, orderBy('date', 'desc'))
 
-/* todos */
 const todos = ref([
 ])
 
-/* Get todos */
+
 onMounted( () => {
   onSnapshot(eventsCollectionQuery, (querySnapshot) => {
     const fbEvents = [];
@@ -151,7 +148,6 @@ onMounted( () => {
   })
 })
 
-/* Add Todo */
 
 const newTodoContent = ref('')
 const newEventType = ref('')

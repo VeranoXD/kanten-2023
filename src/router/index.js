@@ -20,15 +20,15 @@ const router = createRouter({
                 requiresAuth: false
             }, 
         },
-        { 
+/*         { 
             path: "/register",
             name: 'register',
             component: () => import("../views/Register.vue"),
             meta: {
                 title: 'Opret Bruger',
-                requiresAuth: false
+                requiresAuth: true
             }, 
-        },
+        }, */
         { 
             path: "/login", 
             name: 'Login',
@@ -85,6 +85,7 @@ router.beforeEach((to, from, next) => {
     document.title = `Kanten | ${to.meta.title}`; 
     next();
 });
+
 
 
 export default router;

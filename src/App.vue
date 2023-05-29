@@ -3,6 +3,7 @@
     <NavigationTop v-if="!navigation"></NavigationTop>
     <RouterView />
     <Footer v-if="!navigation"></Footer>
+    <Newsletter></Newsletter>
   </div>
 </template>
 
@@ -11,10 +12,11 @@ import Navigation from "./components/Navigation.vue";
 import Footer from "./components/Footer.vue";
 import HjemVue from './views/Hjem.vue';
 import NavigationTop from "./components/NavigationTop.vue";
+import Newsletter from './components/Newsletter.vue';
 
 export default {
   name: "app",
-  components: { Navigation, Footer, NavigationTop },
+  components: { Navigation, Footer, NavigationTop, Newsletter },
   data() {
     return {
       navigation: null,

@@ -8,13 +8,13 @@
       <div class="top flex justify-center items-center">
         <img class="w-36" src="../assets/img/Black_Video.gif" alt="" />
       </div>
-      <h2 class="text-white font-extrabold text-3xl">Login til Kanten</h2>
-      <p class="login-register mb-6 mt-4 text-white">
+      <h2 class="text-white font-extrabold text-3xl mb-6">Login til Kanten</h2>
+<!--       <p class="login-register mb-6 mt-4 text-white">
         Har du ikke en bruger?
         <RouterLink class="text-white underline" :to="{ name: 'register' }"
           >Opret bruger</RouterLink
         >
-      </p>
+      </p> -->
       <div class="inputs w-full max-w-sm">
         <div class="input relative flex justify-center items-center mb-2">
           <input
