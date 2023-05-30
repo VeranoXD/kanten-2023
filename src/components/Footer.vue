@@ -54,10 +54,11 @@
               d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
             ></path>
           </svg>
+          <a href="tel:+4528971185">
           <h1
             class="block text-sm text-gray-500 sm:text-center dark:text-gray-400"
             >28 97 11 85</h1
-          >
+          ></a>
         </div>
 
         <div class="info flex space-x-1 sm:mx-auto">
@@ -66,11 +67,11 @@
    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"></path>
    <path d="M3 7l9 6l9 -6"></path>
 </svg>
-        <h1
+      <a href="mailto:Musikforeningenkanten@gmail.com"> <h1
           class="block text-sm text-gray-500 sm:text-center dark:text-gray-400 "
         >
         Musikforeningenkanten@gmail.com</h1
-        >
+        ></a>
         </div>
       </div>
     </div>

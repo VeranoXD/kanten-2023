@@ -20,6 +20,13 @@
             </RouterLink>
         </li>
         <li>
+            <RouterLink 
+              class="block py-2 pl-3 pr-4 text-gray-300 rounded  md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:bg-gray-700"
+              to="/frivillig"
+              >Frivillig
+            </RouterLink>
+        </li>
+        <li>
             <RouterLink
               class="block py-2 pl-3 pr-4 text-gray-300 rounded  md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:bg-gray-700 "
               to="/gallery"
@@ -30,7 +37,7 @@
             <RouterLink
               class="block py-2 pl-3 pr-4 text-gray-300 rounded  md:hover:bg-transparent md:border-0 md:hover:text-orange-500 md:p-0 dark:hover:bg-gray-700 "
               to="/omos"
-              >Om os
+              >Om Os
             </RouterLink>
         </li>
         <li>

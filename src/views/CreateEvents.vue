@@ -1,8 +1,8 @@
 <template>
-  <div class="background w-auto bg-black  h-screen flex items-center">
+  <div class="background w-auto bg-black  flex items-center">
     <div class="event max-w-lg p-4 m-auto">
       <div class="field w-full">
-        <h1 class="text-white text-center text-6xl font-extrabold p-7">
+        <h1 class="text-white text-center text-5xl font-bold p-7">
           Opret Event
         </h1>
         <div class="control">
@@ -15,7 +15,7 @@
             v-model="newTodoContent"
             type="text"
             id="overskrift"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text bg-gray-200 w-full  outline-none flex items-center self-center"
             required
           />
         </div>
@@ -29,7 +29,7 @@
           <select
             v-model="newEventType"
             id="countries"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text bg-gray-200 w-full  outline-none flex items-center self-center"
           >
             <option value="Manaclub">Manaclub</option>
             <option value="DEFT">DEFT</option>
@@ -48,7 +48,7 @@
             v-model="newVenue"
             type="text"
             id="modested"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text bg-gray-200 w-full  outline-none flex items-center self-center"
             required
           />
         </div>
@@ -63,7 +63,7 @@
             v-model="newDate"
             type="date" min="today"
             id="modested"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text bg-gray-200 w-full  outline-none flex items-center self-center"
             required
           />
         </div>
@@ -81,7 +81,7 @@
             id=""
             cols="30"
             rows="10"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="text bg-gray-200 w-full  outline-none flex items-center self-center"
             required
           ></textarea>
         </div>
@@ -103,7 +103,7 @@
           <div class="control">
             <button
               :disabled="!newTodoContent"
-              class="button bg-orange-600 disabled:opacity-30 text-white max-w-lg p-3 m-auto w-full text-sm font-medium"
+              class="sign-in text-white border-2 border-white px-10 py-3 w-full  disabled:opacity-40"
             >
               Opret Event
             </button>

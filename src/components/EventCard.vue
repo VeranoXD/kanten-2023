@@ -1,6 +1,7 @@
 <template>
   <div
     v-for="event in todos " :key="event"
+    
     class="event-card flex flex-col relative bg-gray-300 rounded-lg"
   >
     <div class="info ">

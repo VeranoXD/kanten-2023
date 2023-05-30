@@ -11,7 +11,7 @@ const router = createRouter({
                 title: 'Hjem',
             },
         },
-        { 
+    /*     { 
             path: "/events",
             name: 'events',
             component: () => import("../components/Events.vue"),
@@ -19,7 +19,7 @@ const router = createRouter({
                 title: 'Events',
                 requiresAuth: false
             }, 
-        },
+        }, */
         { 
             path: "/omos",
             name: 'omos',
@@ -56,6 +56,15 @@ const router = createRouter({
                 requiresAuth: false
             }, 
         },
+        { 
+            path: "/display", 
+            name: 'display',
+            component: () => import("../views/DisplayEvent.vue"),
+            meta: {
+                title: 'Display?',
+                requiresAuth: false
+            }, 
+        },
         {
             path: "/seevents",
             name: 'seevents',
@@ -88,6 +97,15 @@ const router = createRouter({
             component: () => import("../views/Gallery.vue"),
             meta: {
                 title: 'Gallery',
+                requiresAuth: false
+            },
+        },
+        {
+            path: "/frivillig",
+            name: 'frivillig',
+            component: () => import("../views/Frivillig.vue"),
+            meta: {
+                title: 'Frivillig',
                 requiresAuth: false
             },
         },
