@@ -1,5 +1,7 @@
 <template>
+  <!-- v-if="checkHvisTitleErSand" -->
   <div
+  
     v-for="event in todos " :key="event"
     
     class="event-card flex flex-col relative bg-gray-300 rounded-lg"
@@ -9,18 +11,22 @@
         <p class="text-xl font-extrabold">{{ event.content }}</p>
         <p class="">{{ event.event }}</p>
         <p class="">{{ event.dato }}</p>
-
+        <img :src="event.imgURL" alt="">
+<!-- v-if herinde: Check på title af siden, hvis det er "hjem", så skal kan du .slice dit array, så den kun viser 3 elementer. Søg på js array slice  -->
         <router-link class="mt-auto inline-flex items-center py-2" to="#">
           Se Event
         </router-link>
       </div>
     </div>
   </div>
+<!--   <div v-else>
+    Hvis, så det normale kode
+  </div> -->
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
+import { collection, onSnapshot, query, orderBy,  } from "firebase/firestore";
 import { db } from "../firebase/firebaseInit";
 
 
@@ -48,7 +54,8 @@ onMounted(() => {
         venue: doc.data().venue,
         textareafield: doc.data().textareafield,
         done: doc.data().done,
-        dato: doc.data().dato
+        dato: doc.data().dato,
+        imgURL: doc.data().imgURL
       };
       fbEvents.push(todo);
     });

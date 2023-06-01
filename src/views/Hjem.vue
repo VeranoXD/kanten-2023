@@ -126,14 +126,14 @@ export default {
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
+import { collection, onSnapshot, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../firebase/firebaseInit";
 
 /* Firebase refs */
 
 const eventCollectionRef = collection(db, "events");
 const eventsCollectionQuery = query(
-  eventCollectionRef,
+  eventCollectionRef, limit(3),
   orderBy("date", "desc")
 );
 

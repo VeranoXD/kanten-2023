@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { getAuth, onAuthStateChanged } from 'firebase/auth' 
 
 const router = createRouter({
     history: createWebHistory(),
@@ -80,7 +81,7 @@ const router = createRouter({
             component: () => import("../views/CreateEvents.vue"),
             meta: {
                 title: 'Opret Events',
-                requiresAuth: false
+                requireAuth: true
             },
         },
         {
@@ -112,12 +113,32 @@ const router = createRouter({
     ],
 });
 
-router.beforeEach((to, from, next) => {
-    document.title = `Kanten | ${to.meta.title}`; 
-    next();
-});
-
-
+const getCurrentUser = () => {
+    return new Promise((resolve, reject) => {
+      const removeListener = onAuthStateChanged(
+        getAuth(), 
+        user => {
+          removeListener()
+          resolve(user)
+        }, 
+        reject
+      )
+    })
+  }
+  
+  router.beforeEach(async(to, from, next) => {
+    if (to.matched.some(record => record.meta.requireAuth)) {
+      if (await getCurrentUser()) {
+  
+  // before getCurrentUser   if (getAuth().currentUser) {
+        next()
+      } else {
+        next({name: '/login'})
+      }
+    } else {
+      next()
+    }
+  })
 
 export default router;
 

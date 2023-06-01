@@ -4,6 +4,7 @@
         <h3 class="font-bold text-white text-center text-5xl mb-10">Events</h3>
         <div class="event-cards grid gap-10 grid-cols-4 text-center">
           <EventCard
+          
           />
         </div>
       </div>

@@ -93,6 +93,7 @@
             >Upload billede</label
           >
           <span class="sr-only">Upload billede</span>
+          <input type="file" label="File input" @change="uploadImg" />
           <input
             type="file" @change="onFileSelected"
             class="block w-full text-sm text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-600 hover:file:bg-orange-100"
@@ -126,6 +127,12 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseInit";
+import {
+  getStorage,
+  ref as refFB,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 
 
 
@@ -170,6 +177,7 @@ const newEventType = ref("");
 const newVenue = ref("");
 const newTextareafield = ref("");
 const newDate = ref("");
+const imgURL = ref('')
 
 const addTodo = () => {
   addDoc(eventCollectionRef, {
@@ -180,11 +188,75 @@ const addTodo = () => {
     done: false,
     dato: newDate.value,
     date: Date.now(),
+    imgURL: imgURL.value
   });
   newTodoContent.value = "";
   newEventType.value = "";
   newVenue.value = "";
   newTextareafield.value = "";
+};
+
+
+const storage = getStorage();
+
+// Firebase storage upload image + get download URL + enable button after image uploaded
+const uploadImg = async (event) => {
+  let file = event.target.files[0]; // get the file
+  console.log("file", file);
+  // Create the file metadata
+  /** @type {any} */
+  const metadata = {
+    contentType: "image/jpeg",
+  };
+
+  // Upload file and metadata to the object 'images/mountains.jpg'
+  const storageRef = refFB(storage, "images/" + file.name);
+  const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+
+  // Listen for state changes, errors, and completion of the upload.
+  uploadTask.on(
+    "state_changed",
+    (snapshot) => {
+      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log("Upload is " + progress + "% done");
+      switch (snapshot.state) {
+        case "paused":
+          console.log("Upload is paused");
+          break;
+        case "running":
+          console.log("Upload is running");
+          break;
+      }
+    },
+    (error) => {
+      // A full list of error codes is available at
+      // https://firebase.google.com/docs/storage/web/handle-errors
+      switch (error.code) {
+        case "storage/unauthorized":
+          // User doesn't have permission to access the object
+          break;
+        case "storage/canceled":
+          // User canceled the upload
+          break;
+
+        // ...
+
+        case "storage/unknown":
+          // Unknown error occurred, inspect error.serverResponse
+          break;
+      }
+    },
+    () => {
+      // Upload completed successfully, now we can get the download URL
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        console.log("File available at", downloadURL);
+
+        imgURL.value = downloadURL; // update variable imgURL and put the image URL link in it.
+       // addItemData.uploadBtnDisabled = false; // enable button after image uploaded is complete
+      });
+    }
+  );
 };
 </script>
   
