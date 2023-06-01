@@ -45,7 +45,7 @@
       </h3> -->
       <div class="fix px-10 flex justify-center py-20">
         <div class="event-cards grid gap-10 grid-cols-4 text-center w-1/2">
-          <EventCard />
+       <!--    <EventCard /> -->
         </div>
       </div>
 

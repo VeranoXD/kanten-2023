@@ -86,6 +86,22 @@
           ></textarea>
         </div>
 
+
+<!--         <div class="control">
+          <label
+            for="modested"
+            class="block mb-2 text-sm font-medium text-white dark:text-white"
+            >Billetto URL</label
+          >
+          <input
+            v-model="newBillet"
+            type="text"
+            id="modested"
+            class="text bg-gray-200 w-full  outline-none flex items-center self-center"
+            required
+          />
+        </div> -->
+
         <div class="control">
           <label
             for="first_name"
@@ -94,10 +110,10 @@
           >
           <span class="sr-only">Upload billede</span>
           <input type="file" label="File input" @change="uploadImg" />
-          <input
+       <!--    <input
             type="file" @change="onFileSelected"
             class="block w-full text-sm text-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-600 hover:file:bg-orange-100"
-          />
+          /> -->
         </div>
 
         <form @submit.prevent="addTodo">
@@ -163,6 +179,7 @@ onMounted(() => {
         venue: doc.data().venue,
         textareafield: doc.data().textareafield,
         done: doc.data().done,
+/*         billet: doc.data().billet */
       };
       fbEvents.push(todo);
     });
@@ -178,6 +195,7 @@ const newVenue = ref("");
 const newTextareafield = ref("");
 const newDate = ref("");
 const imgURL = ref('')
+/* const newBillet = ref('') */
 
 const addTodo = () => {
   addDoc(eventCollectionRef, {
@@ -188,12 +206,14 @@ const addTodo = () => {
     done: false,
     dato: newDate.value,
     date: Date.now(),
-    imgURL: imgURL.value
+    imgURL: imgURL.value,
+ /*    billet: newBillet.value */
   });
   newTodoContent.value = "";
   newEventType.value = "";
   newVenue.value = "";
   newTextareafield.value = "";
+/*   newBillet.value = ""; */
 };
 
 
